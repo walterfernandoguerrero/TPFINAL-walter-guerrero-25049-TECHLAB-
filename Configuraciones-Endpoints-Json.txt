@@ -1,0 +1,234 @@
+
+
+base de datos: techlabdb
+
+spring.datasource.url=jdbc:mysql://localhost:3306/techlabdb?useSSL=false&serverTimezone=UTC
+
+-------------------------------------------------------------------------------------------
+* spring va crear un usario por defecto desde el Main
+
+
+			// Crea una instancia del usuario
+			Usuario aux = new Usuario();
+			aux.setNombre("walter");
+			aux.setApellido("guerrero");
+			aux.setDni("25521576");
+			aux.setUsuario("walter");
+			aux.setClave("admin");
+			aux.setRol(1);
+
+			Optional<Usuario> existe = usuarioService.VerificarUser(aux.getDni());
+
+			if(existe.isEmpty()){
+				// Guarda el usuario usando el servicio
+				usuarioService.crearUsuario(aux);
+			}
+---------------------------------------------------
+no aplica Spring Seguridad
+solo pega contra la base de datos (lista usuarios) si coinsiden loguea con el que hace por defecto spring ya se puede acceder
+a comprar o al crud
+----------------------------------------
+vamos a tener un usuario para admin y usuario es el mismo,
+sino se puede registrar usuarios en front que van a ser con todos los roles
+
+por defecto
+usuario : walter
+clave: admin
+
+
+----------------------------------------
+
+*crear lista de productos (postman)
+
+http://localhost:8080/producto/batch
+
+
+[
+    {
+        "nombre": "termica sica 20A dos polos TIPO C",
+        "descripcion": "termomagnetica 20 amp dos polos tipo c SICA Hogar",
+        "url_imagen": "https://acdn-us.mitiendanube.com/stores/004/356/104/products/interruptor-termo-bip-20a-1-526b8ebcd3420c635e17268379282535-1024-1024.jpg",
+        "precio": 24000,
+        "categoria": 1,
+        "stock": 100
+    },
+    {
+        "nombre": "termica sica 10A SICA dos polos c",
+        "descripcion": "termomagnetica 10 amp dos polos tipo c sica ",
+        "url_imagen": "https://acdn-us.mitiendanube.com/stores/002/456/532/products/2-20-1-447d4fa6bbbb7aed3517151034078084-1024-1024.jpg",
+        "precio": 18000,
+        "categoria": 1,
+        "stock": 11
+    },
+    {
+        "nombre": "manguera media garden 10 v",
+        "descripcion": "manguera 1/2 pulgada para riego y de 10 mts verde",
+        "url_imagen": "https://abete.com.ar/wp-content/uploads/2024/08/D_665151-MLA77862835170_072024-F.jpg",
+        "precio": 56000,
+        "categoria": 2,
+        "stock": 12
+    },
+    {
+        "nombre": "pinza universal bahco aislada",
+        "descripcion": "pinza de usos múltiples con cobertura aislada ",
+        "url_imagen": "https://crossmaster.com.ar/wp-content/uploads/9969848-600x600.jpg",
+        "precio": 12000,
+        "categoria": 3,
+        "stock": 120
+    },
+    {
+        "nombre": "pinza electricidad stanley",
+        "descripcion": "pinza punta de usos electrico  ",
+        "url_imagen": "https://acdn-us.mitiendanube.com/stores/004/445/429/products/stly-84053-3-ae177b8ff4f1d7822717246894018973-1024-1024.png",
+        "precio": 12000,
+        "categoria": 3,
+        "stock": 120
+    },
+    {
+        "nombre": "Carretilla de jardin Green 65 TRUPER",
+        "descripcion": "Carretiilla de jardin ruedas de goma 65 cmm",
+        "url_imagen": "https://acdn-us.mitiendanube.com/stores/884/906/products/carretilla-truper-65-lts-llanta-maciza-verde-cat-5511-8a4c9b8919b9467ab716646262704179-640-0.jpg",
+        "precio": 150000,
+        "categoria": 30,
+        "stock": 500
+    },
+    {
+        "nombre": "clavos 2pulg ACINDAR m 1k",
+        "descripcion": "clavos de 2 pulgadas de Acindar acero para maderas bolsa de un kilogramo",
+        "url_imagen": "https://images.guanzetti.com.ar/products/5c19309c19e711545154716.jpg",
+        "precio": 20000,
+        "categoria": 8,
+        "stock": 200
+    },
+    {
+        "nombre": "nokia 110",
+        "descripcion": "celular irrompible",
+        "url_imagen": "https://www.la-pantalla.com.ar/wp-content/uploads/cuanto-costaba-un-nokia-1100.webp",
+        "precio": 14000,
+        "categoria": 45,
+        "stock": 23
+    },
+    {
+        "nombre": "Cable TPR 10m 3p 4mm",
+        "descripcion": "Cable tipo taller de 10 mtrs. 3 cables de 4 milimetro ",
+        "url_imagen": "https://http2.mlstatic.com/D_NQ_NP_963251-MLA81981388683_012025-O.webp",
+        "precio": 80000,
+        "categoria": 1,
+        "stock": 30
+    },
+    {
+        "nombre": "Desmalezadora Sthil 50 cc",
+        "descripcion": "desmalesadora de uso hogareño 50cc 2 cuchillas",
+        "url_imagen": "https://http2.mlstatic.com/D_678249-MLA74780214797_022024-C.jpg",
+        "precio": 230000,
+        "categoria": 20,
+        "stock": 12
+    },
+    {
+        "nombre": "monitor HP 22 led  ",
+        "descripcion": "monitor para Pc HP 20 pulgadas ",
+        "url_imagen": "https://http2.mlstatic.com/D_NQ_NP_701370-MLM82602655178_032025-O-oferta-remate-monitor-hp-22-pulgadas-lcd-cable-vga-c.webp",
+        "precio": 240000,
+        "categoria": 10,
+        "stock": 10
+    },
+    {
+        "nombre": "notebook samsung  BOOK3",
+        "descripcion": "Samsung Galaxy Book3 con procesador Intel Core i5 de 13° generación",
+        "url_imagen": "https://images.fravega.com/f1000/52594fea056b2851eb6fa8afe60d1910.jpg",
+        "precio": 800000,
+        "categoria": 10,
+        "stock": 10
+    },
+    {
+        "nombre": "Jarra Termica",
+        "descripcion": "Jarra térmica walter Guerrero",
+        "url_imagen": "https://dcdn-us.mitiendanube.com/stores/932/707/products/race-gel-84-1fd814b2037324420917229540792454-1024-1024.png",
+        "precio": 100000,
+        "categoria": 200,
+        "stock": 22
+    },
+    {
+        "nombre": "Pelota Adidas",
+        "descripcion": "peolta de futbol adidas walter guerrero",
+        "url_imagen": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/26ac42be45734d419903ae7a00bbb000_9366/Pelota_Argentum_22_Pro_Blanco_HE3788_01_standard.jpg",
+        "precio": 57000,
+        "categoria": 100,
+        "stock": 34
+    },
+    {
+        "nombre": "Paleta Padel ",
+        "descripcion": "paleta de padel ",
+        "url_imagen": "https://mall.icbc.com.ar/36363533-large_default/paleta-de-padel-bullpadel-hack-03-24-prestigio.jpg",
+        "precio": 400000,
+        "categoria": 200,
+        "stock": 23
+    },
+    {
+        "nombre": "Impresora Cannon",
+        "descripcion": "impresora walter Guerrero Cannon",
+        "url_imagen": "https://acdn-us.mitiendanube.com/stores/001/467/599/products/canon_g3110-wifi1-cb67f71365153db25b16243950018721-640-0.jpg",
+        "precio": 500000,
+        "categoria": 100,
+        "stock": 7
+    }
+]
+------------------------------------------------------------------------------------------------------
+http://localhost:8080/producto/list  //ver productos (se puede ejecutas en postman http://localhost:8080/producto/batch con el curpo de arriba para tener productos
+
+http://localhost:8080/usuario/list  //ver usuarios al principio 1
+
+http://localhost:8080/pedido/listar // ver pedidos se pueden crear desde carrito de front
+
+json de Pedido: repite cliente mi clase por error y la fecha es string (el front lo contempla)
+----------------------------------------------------------------------------------------------------------
+{
+        "id": 1,
+        "fecha": "06/07/2025",
+        "cliente": "Walter Guerrero",
+        "producto": 3,
+        "precio": 4000,
+        "cantidad": 3,
+        "nropedido": 1,
+        "nombreCliente": "Walter Guerrero"
+    } 
+ 
+para crear un pedido con postman sacar id y usar 
+http://localhost:8080/pedido/nuevoPedido
+--------------------------------------------------------
+el carrito al tocar "finalizar compra" usa 
+
+http://localhost:8080/pedido/batchPedidos  
+
+crea una lista de pedidos con un mismo nro de pedido , fecha(string) , y usuario
+
+---------------------------------------------------------------------------------------
+*un pedido final  es una lista de pedidos con el mismo  nro de pedido 
+http://localhost:8080/pedido/unPedido/2
+
+[
+    {
+        "id": 3,
+        "fecha": "06/07/2025",
+        "cliente": "Walter Guerrero",
+        "producto": 102,
+        "precio": 4000,
+        "cantidad": 10,
+        "nropedido": 2,
+        "nombreCliente": "Walter Guerrero"
+    },
+    {
+        "id": 4,
+        "fecha": "06/07/2025",
+        "cliente": "Walter Guerrero",
+        "producto": 3,
+        "precio": 4000,
+        "cantidad": 4,
+        "nropedido": 2,
+        "nombreCliente": "Walter Guerrero"
+    }
+]
+
+esto lo hace el carrito en front  
+
+
